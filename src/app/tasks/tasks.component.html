@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="../assets/Semantic-UI/semantic.min.css">
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="../assets/Semantic-UI/semantic.min.js"></script> 
+</head>
+
+
+<body>
+
+  <div class="ui container" >
+    <div class="ui three column grid">
+
+      <div class="column">
+        <div class="ui segments" >
+          <div class="ui segment">
+            <h2>Waiting</h2>
+          </div>
+          <ul>
+            <li 
+            (click)="onSelect(task)"
+            [class.selected]="task === selectedTask" 
+            *ngFor="let task of tasksWaiting">
+              <span>{{task.priority}}</span>  {{task.name}}
+              <button (click)="addProgress(task)">Start</button>
+          </li>
+        </ul>
+        </div>
+      </div>
+  
+  <div class="column">
+    <div class="ui segments">
+      <div class="ui segment">
+        <h2>In Progress</h2>
+      </div>
+      <div class="ui segments">
+        <div class="ui segment"
+        *ngFor="let task of tasksInProgress" 
+        (click)="onSelect(task)"
+        [class.selected]="task === selectedTask">
+          {{task.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class = "ui segments">
+      <div class = "ui segment">
+        <h2>Finished</h2>
+      </div>
+      <div class="ui segments">
+        <div class = "ui segment"
+        *ngFor="let task of tasksFinished" 
+        (click)="onSelect(task)"
+        [class.selected]="task === selectedTask">
+
+          {{task.name}}
+          <button>
+              delete
+          </button> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+</div>
+
+<div class="ui divider"></div>
+
+
+<app-task-detail [task]="selectedTask"></app-task-detail>
+
+</body>
+</html> 

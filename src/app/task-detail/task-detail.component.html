@@ -1,0 +1,14 @@
+<div *ngIf="task" style="text-align:center">
+
+    <h2>{{ task.name }}</h2>
+    <div><span>responsible: </span>{{task.responsible}}</div>
+    <div><span>Priority: </span>{{task.priority}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="task.name" placeholder="name"/>
+      </label>
+    </div>
+
+  
+  
+  </div>

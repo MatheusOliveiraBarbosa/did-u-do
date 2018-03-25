@@ -1,0 +1,19 @@
+    /* TasksComponent's private CSS styles */
+    .selected {
+      background-color: rgb(59, 63, 65) !important;
+      color: white;
+    }
+
+    button{
+      background-color: rgb(200, 200, 200);
+      padding: 0.1em 0.1em 0.1em 0.1em;
+      border-radius: 4px;
+      width: 2em;
+      height: 2em;
+    }
+    button :hover{
+      background-color: darksalmon;
+    }
+
+    
+    
