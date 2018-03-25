@@ -10,6 +10,8 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
   <script src="../assets/Semantic-UI/semantic.min.js"></script> 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 
 
@@ -21,17 +23,23 @@
       <div class="column">
         <div class="ui segments" >
           <div class="ui segment">
-            <h2>Waiting</h2>
+            <h2>Waiting 
+                <button class="ui right floated green compact icon button">
+                <i class="material-icons add">add</i>
+                </button> 
+            </h2>
           </div>
-          <ul>
-            <li 
+          <div class="ui segments">
+            <div class=" ui segment"
             (click)="onSelect(task)"
             [class.selected]="task === selectedTask" 
             *ngFor="let task of tasksWaiting">
-              <span>{{task.priority}}</span>  {{task.name}}
-              <button (click)="addProgress(task)">Start</button>
-          </li>
-        </ul>
+              {{task.name}}
+              <button class="ui right floated blue compact icon button"
+               (click)="startTask(task)">
+               <i class="material-icons">play_arrow</i></button>
+          </div>
+        </div>
         </div>
       </div>
   
@@ -46,6 +54,9 @@
         (click)="onSelect(task)"
         [class.selected]="task === selectedTask">
           {{task.name}}
+          <button class="ui right floated yellow compact icon button" (click)="finishedTask(task)">
+            <i class="material-icons">done</i>
+          </button>
         </div>
       </div>
     </div>
@@ -63,8 +74,8 @@
         [class.selected]="task === selectedTask">
 
           {{task.name}}
-          <button>
-              delete
+          <button class="ui right floated red compact icon button" (click)="removeTask(task)">
+              <i class="material-icons">clear</i>
           </button> 
         </div>
       </div>

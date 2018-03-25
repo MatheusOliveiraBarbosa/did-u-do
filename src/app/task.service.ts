@@ -3,23 +3,29 @@ import { Task } from './task/task';
 import { TASKS_WAITING, TASKS_IN_PROGRESS, TASKS_FINISHED } from './task/task-mock';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import {HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class TaskService {
+
+  private tasksURL = 'api/tasks';
   
-  constructor() { }
+  constructor(
+    private http : HttpClient
+  ) { }
 
 
   getTasksWaiting() : Observable<Task[]> {
+    //return this.http.get<Task[]>(this.taskWaitingURL);
     return of (TASKS_WAITING);
   }
 
-  getTasksInProgress() : Task[]{
-    return TASKS_IN_PROGRESS;
+  getTasksInProgress() : Observable<Task[]>{
+    return of (TASKS_IN_PROGRESS);
   }
 
-  getTasksFinished() : Task[]{
-    return TASKS_FINISHED;
+  getTasksFinished() : Observable<Task[]>{
+    return of (TASKS_FINISHED);
   }
 
 }

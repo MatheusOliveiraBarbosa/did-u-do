@@ -32,19 +32,34 @@ export class TasksComponent implements OnInit {
   }
 
   getTaskInProgress() : void {
-    this.tasksInProgress = this.taskService.getTasksInProgress();
+    //this.tasksInProgress = this.taskService.getTasksInProgress();
+    this.taskService.getTasksInProgress().subscribe(tasksInProgress => this.tasksInProgress = tasksInProgress);
   }
 
   getTasksFinished() : void {
-    this.tasksFinished = this.taskService.getTasksFinished();
+    //this.tasksFinished = this.taskService.getTasksFinished();
+    this.taskService.getTasksFinished().subscribe(tasksFinished => this.tasksFinished = tasksFinished);
   }
 
   onSelect(task : Task){
     this.selectedTask = task;
   }
 
-  addProgress(task : Task) : void{
+  startTask(task : Task) : void{
     this.tasksInProgress.push(task);
+    var i = this.tasksWaiting.indexOf(task);
+    this.tasksWaiting.splice(i,1);
+  }
+
+  finishedTask(task : Task) : void {
+    this.tasksFinished.push(task);
+    var i = this.tasksInProgress.indexOf(task);
+    this.tasksInProgress.splice(i,1);
+  }
+
+  removeTask(task : Task) : void {
+    var i = this.tasksFinished.lastIndexOf(task);
+    this.tasksFinished.splice(i,1);
   }
 
 
