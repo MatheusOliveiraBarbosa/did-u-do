@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Task } from '../task/task';
 import { TaskService } from '../task.service';
+import { TasksComponent } from '../tasks/tasks.component';
 
 
 
@@ -15,6 +16,8 @@ import { TaskService } from '../task.service';
 export class TaskDetailComponent implements OnInit {
 
   @Input() task : Task;
+  @Input() tasksComponent : TasksComponent;
+  
 
   constructor(
     private route : ActivatedRoute,
@@ -22,12 +25,20 @@ export class TaskDetailComponent implements OnInit {
     private location : Location
     ) {}
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
   goBack() : void{
     this.location.back();
   }
 
+  saveTask(task: Task) : void{
+    this.tasksComponent.saveTask(task);
+  }
 
+  cancel() : void {
+    this.tasksComponent.cancel();
+  }
+
+ 
 }

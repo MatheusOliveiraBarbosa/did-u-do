@@ -41,8 +41,26 @@ export class TasksComponent implements OnInit {
     this.taskService.getTasksFinished().subscribe(tasksFinished => this.tasksFinished = tasksFinished);
   }
 
-  onSelect(task : Task){
+  onSelect(task : Task) : void{
     this.selectedTask = task;
+  }
+
+  createTask() : void {
+    this.selectedTask = new Task;
+  }
+
+  saveTask(task : Task) : void {
+    if(!this.tasksWaiting.includes(task) 
+    && !this.tasksInProgress.includes(task) 
+    && !this.tasksFinished.includes(task) 
+    && task.name != null && task.priority != null && task.responsible != null ){
+      this.tasksWaiting.push(task);
+    }
+    this.selectedTask = null;
+  }
+
+  cancel() : void {
+    this.selectedTask = null;
   }
 
   startTask(task : Task) : void{
@@ -60,6 +78,7 @@ export class TasksComponent implements OnInit {
   removeTask(task : Task) : void {
     var i = this.tasksFinished.lastIndexOf(task);
     this.tasksFinished.splice(i,1);
+    this.selectedTask = null;
   }
 
 

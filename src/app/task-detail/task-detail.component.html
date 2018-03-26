@@ -1,14 +1,44 @@
-<div *ngIf="task" style="text-align:center">
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="../assets/Semantic-UI/semantic.min.css">
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="../assets/Semantic-UI/semantic.min.js"></script> 
+  
+  </head>
 
+<div *ngIf="task" >
+
+  <div class="form_adaptive">
     <h2>{{ task.name }}</h2>
-    <div><span>responsible: </span>{{task.responsible}}</div>
-    <div><span>Priority: </span>{{task.priority}}</div>
     <div>
-      <label>name:
-        <input [(ngModel)]="task.name" placeholder="name"/>
-      </label>
+      <div class=" ui label input">
+        Responsible: 
+        <input [(ngModel)]="task.responsible" placeholder="responsible"/>
+      </div>
     </div>
 
-  
+    <div>
+      <div class=" ui label input">
+        Priority: 
+        <input [(ngModel)]="task.priority" placeholder="priority"/>
+      </div>
+    </div>
+
+    <div>
+      <div class=" ui label input">
+        Name:
+        <input  [(ngModel)]="task.name" placeholder="name"/>
+      </div>
+    </div>
+
+    <div class="ui buttons">
+      <button (click)="cancel()" class="ui mini button">Cancel</button>
+      <div class="or"></div>
+      <button class="ui mini positive button" (click)="saveTask(task)">Save</button>
+    </div>
+  </div>
   
   </div>

@@ -1,0 +1,26 @@
+/* Task details specific CSS*/
+
+h2 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+
+input{
+    border-radius: 4px;
+    text-align: center;
+}
+
+ div.form_adaptive{
+     width: 100%;
+     position: relative;
+} 
+
+div {
+    text-align: center;
+}
+
+div.label{
+    width: 30%;
+    text-align: left;
+}

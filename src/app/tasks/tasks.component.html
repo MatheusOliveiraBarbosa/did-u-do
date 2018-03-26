@@ -24,7 +24,9 @@
         <div class="ui segments" >
           <div class="ui segment">
             <h2>Waiting 
-                <button class="ui right floated green compact icon button">
+                <button 
+                (click)="createTask()"
+                class="ui right floated green compact icon button">
                 <i class="material-icons add">add</i>
                 </button> 
             </h2>
@@ -55,7 +57,7 @@
         [class.selected]="task === selectedTask">
           {{task.name}}
           <button class="ui right floated yellow compact icon button" (click)="finishedTask(task)">
-            <i class="material-icons">done</i>
+            <i class="material-icons">stop</i>
           </button>
         </div>
       </div>
@@ -75,7 +77,7 @@
 
           {{task.name}}
           <button class="ui right floated red compact icon button" (click)="removeTask(task)">
-              <i class="material-icons">clear</i>
+              <i class="material-icons">done</i>
           </button> 
         </div>
       </div>
@@ -89,7 +91,9 @@
 <div class="ui divider"></div>
 
 
-<app-task-detail [task]="selectedTask"></app-task-detail>
+<app-task-detail [tasksComponent]="this" [task]="selectedTask"></app-task-detail>
+
+
 
 </body>
 </html> 
